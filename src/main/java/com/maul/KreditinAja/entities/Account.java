@@ -1,11 +1,15 @@
 package com.maul.KreditinAja.entities;
 
+import java.util.List;
+
 public class Account {
     private String id;
     private String username;
     private String email;
     private String password;
     private Profile profile;
+    private Developer developer;
+    private List<Property> properties;
 
     public Account() {
     }
@@ -55,5 +59,21 @@ public class Account {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public Developer getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(Developer developer) {
+        this.developer = developer;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 }

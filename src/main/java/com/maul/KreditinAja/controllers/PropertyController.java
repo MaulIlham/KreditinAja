@@ -26,7 +26,8 @@ public class PropertyController {
     public List<Property> getAllDataProperty(){
         List<Property> properties = propertyService.getAllData().stream()
                 .map(item -> {
-                    List<Image> images = imageService.getAllData().stream().filter(image -> image.getPropertyId().equals(item.getId())).collect(Collectors.toList());
+                    List<Image> images = imageService.getAllData().stream()
+                            .filter(image -> image.getPropertyId().equals(item.getId())).collect(Collectors.toList());
                     item.setImages(images);
                     return item;
                 }).collect(Collectors.toList());
@@ -35,7 +36,10 @@ public class PropertyController {
 
     @GetMapping("/{id}")
     public Property getDataPropertyById(@PathVariable String id){
-        return propertyService.getDataById(id);
+        List<Image> images = imageService.getAllData().stream().filter(image -> image.getPropertyId().equals(id)).collect(Collectors.toList());
+        Property property = propertyService.getDataById(id);
+        property.setImages(images);
+        return property;
     }
 
     @PostMapping()

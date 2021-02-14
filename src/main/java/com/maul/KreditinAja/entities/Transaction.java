@@ -1,6 +1,8 @@
 package com.maul.KreditinAja.entities;
 
 
+import java.util.List;
+
 public class Transaction {
     private String id;
     private String propertyId;
@@ -10,6 +12,7 @@ public class Transaction {
     private Double downPayment;
     private String dateTransaction;
     private String typeKpr;
+    private List<DetailTransaction> detailTransactions;
 
     public Transaction() {
     }
@@ -87,5 +90,13 @@ public class Transaction {
 
     public void setTypeKpr(String typeKpr) {
         this.typeKpr = typeKpr;
+    }
+
+    public List<DetailTransaction> getDetailTransactions() {
+        return detailTransactions;
+    }
+
+    public void setDetailTransactions(List<DetailTransaction> detailTransactions) {
+        this.detailTransactions = detailTransactions;
     }
 }

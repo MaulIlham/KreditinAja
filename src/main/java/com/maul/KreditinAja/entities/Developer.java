@@ -1,5 +1,8 @@
 package com.maul.KreditinAja.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Developer {
     private String id;
     private String name;
@@ -14,6 +17,7 @@ public class Developer {
     private String village;
     private String postCode;
     private String accountId;
+    private List<Property> properties;
 
     public Developer() {
     }
@@ -136,5 +140,13 @@ public class Developer {
 
     public void setAccountId(String accountId) {
         this.accountId = accountId;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 }

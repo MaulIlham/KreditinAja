@@ -1,8 +1,12 @@
 package com.maul.KreditinAja.services.impls;
 
+import com.maul.KreditinAja.entities.Account;
 import com.maul.KreditinAja.entities.Developer;
+import com.maul.KreditinAja.entities.Profile;
 import com.maul.KreditinAja.repositories.DeveloperRepository;
+import com.maul.KreditinAja.services.AccountService;
 import com.maul.KreditinAja.services.DeveloperService;
+import com.maul.KreditinAja.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +26,11 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public Developer getDataById(String id) {
         return developerRepository.findById(id);
+    }
+
+    @Override
+    public Developer getDeveloperByAccountId(String id) {
+        return developerRepository.findByAccountId(id);
     }
 
     @Override

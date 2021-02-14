@@ -32,6 +32,14 @@ public class DeveloperRepositoryImpl implements DeveloperRepository{
     }
 
     @Override
+    public Developer findByAccountId(String id) {
+        String query = "SELECT * from developer where account_id = ?";
+        RowMapper<Developer> developerRowMapper = new BeanPropertyRowMapper<Developer>(Developer.class);
+        Developer developer = jdbcTemplate.queryForObject(query, developerRowMapper, id);
+        return developer;
+    }
+
+    @Override
     public void save(Developer data) {
         String query = "INSERT INTO developer(id,name,email,phone_number,fax,website,address,province,city,sub_district,village,post_code,account_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(query,data.getId(),data.getName(),data.getEmail(),data.getPhoneNumber(),data.getFax(),data.getWebsite(), data.getAddress(),data.getProvince(),data.getCity(),data.getSubDistrict(),data.getVillage(),data.getPostCode(),data.getAccountId());
