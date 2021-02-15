@@ -45,4 +45,4 @@ of image, you can change path image in Constant.java
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-you can open http://localhost:8844/api-docs.html for the API documentation 
+run the project and open http://localhost:8844/api-docs.html for the API documentation 
