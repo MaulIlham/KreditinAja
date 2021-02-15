@@ -1,6 +1,7 @@
 package com.maul.KreditinAja.entities;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Property {
     private String id;
@@ -147,5 +148,28 @@ public class Property {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Property property = (Property) o;
+        return Objects.equals(id, property.id) &&
+                Objects.equals(name, property.name) &&
+                Objects.equals(size, property.size) &&
+                Objects.equals(address, property.address) &&
+                Objects.equals(latitude, property.latitude) &&
+                Objects.equals(longitude, property.longitude) &&
+                Objects.equals(certificate, property.certificate) &&
+                Objects.equals(powerSupply, property.powerSupply) &&
+                Objects.equals(description, property.description) &&
+                Objects.equals(price, property.price) &&
+                Objects.equals(status, property.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, size, address, latitude, longitude, certificate, powerSupply, description, price, status);
     }
 }

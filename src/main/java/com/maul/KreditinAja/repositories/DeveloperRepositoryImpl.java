@@ -57,4 +57,10 @@ public class DeveloperRepositoryImpl implements DeveloperRepository{
         String query = "DELETE FROM developer where id = ?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public void deleteAll() {
+        String query = "truncate table developer";
+        jdbcTemplate.update(query);
+    }
 }

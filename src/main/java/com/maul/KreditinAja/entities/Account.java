@@ -1,6 +1,7 @@
 package com.maul.KreditinAja.entities;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Account {
     private String id;
@@ -75,5 +76,21 @@ public class Account {
 
     public void setProperties(List<Property> properties) {
         this.properties = properties;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(id, account.id) &&
+                Objects.equals(username, account.username) &&
+                Objects.equals(email, account.email) &&
+                Objects.equals(password, account.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, email, password);
     }
 }

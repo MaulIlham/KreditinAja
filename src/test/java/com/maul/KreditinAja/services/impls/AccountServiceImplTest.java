@@ -20,11 +20,15 @@ class AccountServiceImplTest {
 
     @BeforeEach
     public void cleanUp() {
-//        accountRepository.deleteAll();
+        accountRepository.deleteAll();
     }
 
     @Test
-    void getAccountByUsername() {
+    void getAccountByUsername_shouldGetData_whenGivenCorrectUsername() {
+        Account accountA = new Account(UUID.randomUUID().toString(),"test1","test1@gmail.com","test1");
+        accountRepository.save(accountA);
+        Account accountB = accountRepository.findByUsername("test1");
+        assertEquals(accountA,accountB);
     }
 
     @Test
@@ -35,18 +39,37 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void getDataById() {
+    void getDataById_shouldGetData_whenGivenCorrectId() {
+        Account accountA = new Account("testUuid","test1","test1@gmail.com","test1");
+        accountRepository.save(accountA);
+        Account accountB = accountRepository.findByUsername("test1");
+        assertEquals(accountA,accountRepository.findById(accountB.getId()));
     }
 
     @Test
-    void insertData() {
+    void insertData_shouldAdd1DataInDB_whenSaved() {
+        Account accountA = new Account("testUuid","test1","test1@gmail.com","test1");
+        accountRepository.save(accountA);
+        assertEquals(1,accountRepository.findAll().size());
     }
 
     @Test
-    void updateData() {
+    void updateData_shouldUpdateDataInDB_whenUpdate() {
+        Account accountA = new Account("testUuid","test1","test1@gmail.com","test1");
+        accountRepository.save(accountA);
+        Account accountB = accountRepository.findByUsername("test1");
+        accountB.setUsername("updateTest");
+        accountRepository.update(accountB);
+        assertEquals(new Account("testUuid","updateTest","test1@gmail.com","test1"),accountB);
     }
 
     @Test
-    void deleteData() {
+    void deleteData_shouldDelete1DataInDB_whenDeleted() {
+        Account accountA = new Account("testUuid1","test1","test1@gmail.com","test1");
+        Account accountB = new Account("testUuid2","test2","test2@gmail.com","test2");
+        accountRepository.save(accountA);
+        accountRepository.save(accountB);
+        accountRepository.deleteById(accountA.getId());
+        assertEquals(1,accountRepository.findAll().size());
     }
 }

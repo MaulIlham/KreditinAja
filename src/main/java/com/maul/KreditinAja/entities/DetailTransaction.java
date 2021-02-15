@@ -1,5 +1,7 @@
 package com.maul.KreditinAja.entities;
 
+import java.util.Objects;
+
 public class DetailTransaction {
     private String id;
     private String transactionId;
@@ -46,5 +48,21 @@ public class DetailTransaction {
 
     public void setDatePayment(String datePayment) {
         this.datePayment = datePayment;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DetailTransaction that = (DetailTransaction) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(transactionId, that.transactionId) &&
+                Objects.equals(paymentAmount, that.paymentAmount) &&
+                Objects.equals(datePayment, that.datePayment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, transactionId, paymentAmount, datePayment);
     }
 }

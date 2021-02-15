@@ -49,4 +49,10 @@ public class DetailTransactionRepositoryImpl implements DetailTransactionReposit
         String query = "DELETE FROM detailtransaction where id = ?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public void deleteAll() {
+        String query = "TRUNCATE TABLE detailtransaction";
+        jdbcTemplate.update(query);
+    }
 }

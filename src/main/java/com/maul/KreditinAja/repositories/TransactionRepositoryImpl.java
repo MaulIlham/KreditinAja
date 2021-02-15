@@ -49,4 +49,10 @@ public class TransactionRepositoryImpl implements TransactionRepository{
         String query = "DELETE FROM transaction where id = ?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public void deleteAll() {
+        String query = "TRUNCATE TABLE transaction";
+        jdbcTemplate.update(query);
+    }
 }

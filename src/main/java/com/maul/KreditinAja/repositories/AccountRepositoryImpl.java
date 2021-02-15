@@ -57,4 +57,10 @@ public class AccountRepositoryImpl implements AccountRepository{
         String query = "DELETE FROM account where id = ?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public void deleteAll() {
+        String query = "TRUNCATE TABLE account";
+        jdbcTemplate.update(query);
+    }
 }

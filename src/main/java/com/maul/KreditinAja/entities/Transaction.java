@@ -2,6 +2,7 @@ package com.maul.KreditinAja.entities;
 
 
 import java.util.List;
+import java.util.Objects;
 
 public class Transaction {
     private String id;
@@ -98,5 +99,25 @@ public class Transaction {
 
     public void setDetailTransactions(List<DetailTransaction> detailTransactions) {
         this.detailTransactions = detailTransactions;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(propertyId, that.propertyId) &&
+                Objects.equals(accountId, that.accountId) &&
+                Objects.equals(mortgagePayments, that.mortgagePayments) &&
+                Objects.equals(loanAmount, that.loanAmount) &&
+                Objects.equals(downPayment, that.downPayment) &&
+                Objects.equals(dateTransaction, that.dateTransaction) &&
+                Objects.equals(typeKpr, that.typeKpr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, propertyId, accountId, mortgagePayments, loanAmount, downPayment, dateTransaction, typeKpr);
     }
 }

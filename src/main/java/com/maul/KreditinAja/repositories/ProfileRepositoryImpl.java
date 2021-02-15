@@ -60,4 +60,10 @@ public class ProfileRepositoryImpl implements ProfileRepository{
         String query = "DELETE FROM profile where id = ?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public void deleteAll() {
+        String query = "TRUNCATE TABLE profile";
+        jdbcTemplate.update(query);
+    }
 }

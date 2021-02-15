@@ -50,4 +50,10 @@ public class ImageRepositoryImpl implements ImageRepository{
         String query = "DELETE FROM image where id = ?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public void deleteAll() {
+        String query = "TRUNCATE TABLE image";
+        jdbcTemplate.update(query);
+    }
 }

@@ -39,7 +39,7 @@ of image, you can change path image in Constant.java
    ```
 3. [optional] Run Spring Boot app with java -jar command
    ```JS
-   java -jar target/mywebserviceapp-0.0.1-SNAPSHOT.jar
+   java -jar target/Kreditin-Aja-0.0.1-SNAPSHOT.jar
    ```
 
 <!-- USAGE EXAMPLES -->

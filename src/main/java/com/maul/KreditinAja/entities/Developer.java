@@ -2,6 +2,7 @@ package com.maul.KreditinAja.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Developer {
     private String id;
@@ -148,5 +149,30 @@ public class Developer {
 
     public void setProperties(List<Property> properties) {
         this.properties = properties;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Developer developer = (Developer) o;
+        return Objects.equals(id, developer.id) &&
+                Objects.equals(name, developer.name) &&
+                Objects.equals(email, developer.email) &&
+                Objects.equals(phoneNumber, developer.phoneNumber) &&
+                Objects.equals(fax, developer.fax) &&
+                Objects.equals(website, developer.website) &&
+                Objects.equals(address, developer.address) &&
+                Objects.equals(province, developer.province) &&
+                Objects.equals(city, developer.city) &&
+                Objects.equals(subDistrict, developer.subDistrict) &&
+                Objects.equals(village, developer.village) &&
+                Objects.equals(postCode, developer.postCode) &&
+                Objects.equals(accountId, developer.accountId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, phoneNumber, fax, website, address, province, city, subDistrict, village, postCode, accountId);
     }
 }

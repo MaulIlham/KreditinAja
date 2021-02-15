@@ -1,5 +1,7 @@
 package com.maul.KreditinAja.entities;
 
+import java.util.Objects;
+
 public class Profile {
     private String id;
     private String firstName;
@@ -106,5 +108,27 @@ public class Profile {
 
     public void setIsDeveloper(boolean isDeveloper) {
         this.isDeveloper = isDeveloper;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Profile profile = (Profile) o;
+        return isDeveloper == profile.isDeveloper &&
+                Objects.equals(id, profile.id) &&
+                Objects.equals(firstName, profile.firstName) &&
+                Objects.equals(lastName, profile.lastName) &&
+                Objects.equals(gender, profile.gender) &&
+                Objects.equals(birthDate, profile.birthDate) &&
+                Objects.equals(address, profile.address) &&
+                Objects.equals(photoProfile, profile.photoProfile) &&
+                Objects.equals(photoIdentity, profile.photoIdentity) &&
+                Objects.equals(accountId, profile.accountId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, gender, birthDate, address, photoProfile, photoIdentity, accountId, isDeveloper);
     }
 }

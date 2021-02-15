@@ -8,4 +8,5 @@ public interface GenericRepository<T> {
     public void save(T data);
     public void update(T data);
     public void deleteById(String id);
+    public void deleteAll();
 }

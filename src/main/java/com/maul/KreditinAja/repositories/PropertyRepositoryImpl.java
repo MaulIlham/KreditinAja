@@ -49,4 +49,10 @@ public class PropertyRepositoryImpl implements PropertyRepository{
         String query = "DELETE FROM property where id = ?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public void deleteAll() {
+        String query = "TRUNCATE TABLE property";
+        jdbcTemplate.update(query);
+    }
 }
