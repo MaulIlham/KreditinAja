@@ -131,4 +131,20 @@ public class Profile {
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, gender, birthDate, address, photoProfile, photoIdentity, accountId, isDeveloper);
     }
+
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", address='" + address + '\'' +
+                ", photoProfile='" + photoProfile + '\'' +
+                ", photoIdentity='" + photoIdentity + '\'' +
+                ", accountId='" + accountId + '\'' +
+                ", isDeveloper=" + isDeveloper +
+                '}';
+    }
 }

@@ -1,7 +1,9 @@
 package com.maul.KreditinAja.services.impls;
 
 import com.maul.KreditinAja.entities.Account;
+import com.maul.KreditinAja.entities.Profile;
 import com.maul.KreditinAja.repositories.AccountRepository;
+import com.maul.KreditinAja.services.AccountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ class AccountServiceImplTest {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    AccountService accountService;
+
     @BeforeEach
     public void cleanUp() {
         accountRepository.deleteAll();
@@ -27,7 +32,7 @@ class AccountServiceImplTest {
     void getAccountByUsername_shouldGetData_whenGivenCorrectUsername() {
         Account accountA = new Account(UUID.randomUUID().toString(),"test1","test1@gmail.com","test1");
         accountRepository.save(accountA);
-        Account accountB = accountRepository.findByUsername("test1");
+        Account accountB = accountService.getAccountByUsername("test1");
         assertEquals(accountA,accountB);
     }
 
@@ -35,21 +40,20 @@ class AccountServiceImplTest {
     void getAllData_shouldGet1_whenDataInDBIs1() {
         Account accountA = new Account(UUID.randomUUID().toString(),"test1","test1@gmail.com","test1");
         accountRepository.save(accountA);
-        assertEquals(1,accountRepository.findAll().size());
+        assertEquals(1,accountService.getAllData().size());
     }
 
     @Test
     void getDataById_shouldGetData_whenGivenCorrectId() {
         Account accountA = new Account("testUuid","test1","test1@gmail.com","test1");
         accountRepository.save(accountA);
-        Account accountB = accountRepository.findByUsername("test1");
-        assertEquals(accountA,accountRepository.findById(accountB.getId()));
+        assertEquals(accountA,accountService.getDataById(accountA.getId()));
     }
 
     @Test
     void insertData_shouldAdd1DataInDB_whenSaved() {
         Account accountA = new Account("testUuid","test1","test1@gmail.com","test1");
-        accountRepository.save(accountA);
+        accountService.insertData(accountA);
         assertEquals(1,accountRepository.findAll().size());
     }
 
@@ -59,7 +63,7 @@ class AccountServiceImplTest {
         accountRepository.save(accountA);
         Account accountB = accountRepository.findByUsername("test1");
         accountB.setUsername("updateTest");
-        accountRepository.update(accountB);
+        accountService.updateData(accountB);
         assertEquals(new Account("testUuid","updateTest","test1@gmail.com","test1"),accountB);
     }
 
@@ -67,9 +71,9 @@ class AccountServiceImplTest {
     void deleteData_shouldDelete1DataInDB_whenDeleted() {
         Account accountA = new Account("testUuid1","test1","test1@gmail.com","test1");
         Account accountB = new Account("testUuid2","test2","test2@gmail.com","test2");
-        accountRepository.save(accountA);
-        accountRepository.save(accountB);
-        accountRepository.deleteById(accountA.getId());
+        accountService.insertData(accountA);
+        accountService.insertData(accountB);
+        accountService.deleteData(accountA.getId());
         assertEquals(1,accountRepository.findAll().size());
     }
 }
